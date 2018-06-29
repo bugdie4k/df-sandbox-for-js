@@ -1,0 +1,16 @@
+{
+  "name": "df-sandbox-for-js",
+  "version": "0.0.0",
+  "description": "My sandbox for JS code",
+  "dependencies": {
+    "@dagrejs/graphlib": "^2.1.3",
+    "jest": "^23.2.0",
+    "formatree": "^1.0.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Danylo Fedorov",
+  "license": "MIT"
+}
