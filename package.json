@@ -1,17 +1,34 @@
 {
-  "name": "df-sandbox-for-js",
-  "version": "0.0.0",
-  "description": "My sandbox for JS code",
-  "dependencies": {
-    "@dagrejs/graphlib": "^2.1.3",
-    "jest": "^23.2.0",
-    "formatree": "^1.0.2",
-    "uuid": "^3.3.2"
-  },
-  "devDependencies": {},
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "Danylo Fedorov",
-  "license": "MIT"
+    "name": "df-sandbox-for-js",
+    "version": "0.0.0",
+    "author": "Danylo Fedorov",
+    "description": "My sandbox for JS code",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/bugdie4k/df-sandbox-for-js.git"
+    },
+    "dependencies": {
+        "@dagrejs/graphlib": "^2.1.3",
+        "jest": "^23.2.0",
+        "formatree": "^1.0.2",
+        "uuid": "^3.3.2"
+    },
+    "devDependencies": {
+        "esdoc": "^1.1.0",
+        "esdoc-node": "^1.0.3",
+        "esdoc-standard-plugin": "^1.0.0",
+        "prettier": "^1.13.7",
+        "standard": "^11.0.1"
+    },
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "docs": "rm -rfv docs && node node_modules/.bin/esdoc -c .esdoc.json",
+        "fix": "node node_modules/.bin/standard --fix --verbose"
+    },
+    "standard": {
+        "ignore": [
+            "docs"
+        ]
+    }
 }

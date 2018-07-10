@@ -1,23 +1,23 @@
-function indexOfMin(a, start) {
-    let min_i = start;
-    let min = a[min_i];
-    for (let i = start; i < a.length; ++i) {
-        if (a[i] < min) {
-            min = a[i];
-            min_i = i;
-        }
+function indexOfMin (a, start) {
+  let minI = start
+  let min = a[minI]
+  for (let i = start; i < a.length; ++i) {
+    if (a[i] < min) {
+      min = a[i]
+      minI = i
     }
-    return min_i;
+  }
+  return minI
 }
 
-function selectionSort(a) {
-    for (let i = 0; i < a.length; ++i) {
-        const min_i = indexOfMin(a, i);
-        const tmp = a[i];
-        a[i] = a[min_i];
-        a[min_i] = tmp;
-    }
-    return a;
+function selectionSort (a) {
+  for (let i = 0; i < a.length; ++i) {
+    const minI = indexOfMin(a, i)
+    const tmp = a[i]
+    a[i] = a[minI]
+    a[minI] = tmp
+  }
+  return a
 }
 
-module.exports = selectionSort;
+module.exports = selectionSort

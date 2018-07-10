@@ -1,0 +1,22 @@
+{
+    "source": ".",
+    "destination": "./docs",
+    "includes": ["\\.js$"],
+    "excludes": [
+        "node_modules",
+        "\\.test.js$",
+        "^\\.",
+        "docs/",
+        "coverage",        
+    ],
+    "outputAST": false,
+    "plugins": [
+        { "name": "esdoc-node" },
+        {
+            "name": "esdoc-standard-plugin",
+            "option": {
+                "unexportedIdentifier": { "enable": true }
+            }
+        }
+    ]
+}
