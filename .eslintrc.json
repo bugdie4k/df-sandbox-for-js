@@ -1,0 +1,25 @@
+{
+  "extends": "standard",
+  "plugins": ["json"],
+  "env": {
+    "jest": true
+  },
+  "rules": {
+    "array-bracket-spacing": [
+      "error",
+      "always",
+      {
+        "objectsInArrays": false,
+        "arraysInArrays": false
+      }
+    ],
+    "object-curly-spacing": [
+      "error",
+      "always",
+      {
+        "arraysInObjects": false,
+        "objectsInObjects": false
+      }
+    ]
+  }
+}

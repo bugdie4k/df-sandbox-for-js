@@ -1,0 +1,6 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`insertion sort fails with bad COPY_TYPE 1`] = `
+"Unexpected enum value: BAD_COPY_TYPE
+"
+`;

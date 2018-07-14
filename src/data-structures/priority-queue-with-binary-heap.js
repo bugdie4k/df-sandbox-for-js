@@ -32,7 +32,10 @@ class PriorityQueue {
   }
 
   changePriority (predicate, newPriority) {
-    this.binheap.modify(predicate, )
+    this.binheap.modify(
+      (el1, el2) => predicate(el1.priority, el2.priority),
+      newPriority
+    )
   }
 
   array () {

@@ -1,6 +1,6 @@
 const uuid = require('uuid/v1')
-const assert = require('assert')
 const { inspect } = require('util')
+const ConstType = require('../../utils/ConstType')
 
 // OMG: https://gist.github.com/jed/982883
 /* function uuid(a) {
@@ -18,29 +18,26 @@ function randint (min, max) {
   return Math.floor(Math.random() * (max - min)) + min
 }
 
-const edgeTypes = {
-  UNDIRECTED: '__UNDIRECTED_EDGE_TYPE__',
-  DIRECTED: '__DIRECTED_EDGE_TYPE__'
-}
-
-/** @private */
-function validateType (type) {
-  const isUndirected = type === edgeTypes.UNDIRECTED
-  const isDirected = type === edgeTypes.DIRECTED
-  assert(isUndirected || isDirected)
-}
+/**
+ * @name EDGE_TYPE
+ * @const {Object}
+ * @prop {string} UNDIRECTED
+ * @prop {string} DIRECTED
+ * @prop {function} validate
+ */
+const EDGE_TYPE = new ConstType([ 'UNDIRECTED', 'DIRECTED' ])
 
 class Edge {
   constructor (srcNode, dstNode, data, type) {
     this.srcNode = srcNode
     this.dstNode = dstNode
     this.data = data
-    validateType(type)
+    EDGE_TYPE.validate(type)
     this.type = type
   }
 
   isDirected () {
-    return this.type === edgeTypes.DIRECTED
+    return this.type === EDGE_TYPE.DIRECTED
   }
 }
 
@@ -56,7 +53,7 @@ class Node {
 }
 
 class Graph {
-  constructor (type = edgeTypes.DIRECTED) {
+  constructor (type = EDGE_TYPE.DIRECTED) {
     this.type = type
     this.nodes = {}
     this.edges = {}
@@ -69,6 +66,21 @@ class Graph {
     return node
   }
 
+  /**
+   * @typedef {Array} nodeInfo
+   * Has two elements: [ nodeId, nodeData ].
+   * They are used to create a Node for Graph.
+   */
+  /**
+   * @param {...nodeInfo} nodes
+   */
+  addNodes (...nodes) {
+    for (const n of nodes) {
+      this.addNode(n[0], n[1])
+    }
+    return this
+  }
+
   addEdge (srcId, dstId, data) {
     const srcNode = this.getNode(srcId)
     const dstNode = this.getNode(dstId)
@@ -76,12 +88,27 @@ class Graph {
     this.edges[edge.srcNode.id][edge.dstNode.id] = edge
     // ???
     /* if (this.type === edgeTypes.UNDIRECTED) {
-            this.edges[edge.dstNode.id][edge.srcNode.id] = edge;
-        } */
+      this.edges[edge.dstNode.id][edge.srcNode.id] = edge
+    } */
     return edge
   }
 
-  addEdges (...ids) {
+  /**
+   * @typedef {Array} edgeInfo
+   * Has three elements: [ sourceNodeId, destinationNodeid, edgeData ].
+   * They are used to create new Edge for Graph.
+   */
+  /**
+   * @param {...edgeInfo} edges
+   */
+  addEdges (...edges) {
+    for (const e of edges) {
+      this.addEdge(e[0], e[1], e[2])
+    }
+    return this
+  }
+
+  connect (...ids) {
     for (let i = 0; i < ids.length - 1; ++i) {
       this.addEdge(ids[i], ids[i + 1])
     }
@@ -109,7 +136,12 @@ class Graph {
   }
 
   isDirected () {
-    return this.type === edgeTypes.DIRECTED
+    return this.type === EDGE_TYPE.DIRECTED
+  }
+
+  /** TODO: better name? */
+  outNeighbors (id) {
+    return Object.keys(this.edges[id])
   }
 
   toDotGv ({
@@ -139,7 +171,9 @@ class Graph {
       string += `    ${opt}="${graphOptions[opt]}";\n`
     }
     for (const id in this.nodes) {
-      string += `    ${id.toString()} [label="${vertexLabel(this.nodes[id])}",shape=circle];\n`
+      string += `    ${id.toString()} [label="${vertexLabel(
+        this.nodes[id]
+      )}",shape=circle];\n`
     }
     for (const id1 in this.edges) {
       for (const id2 in this.edges[id1]) {
@@ -160,5 +194,5 @@ class Graph {
 
 module.exports = {
   Graph,
-  edgeTypes
+  EDGE_TYPE
 }

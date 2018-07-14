@@ -1,16 +1,16 @@
 const formatree = require('formatree')
+const ConstType = require('../../utils/ConstType')
 
 /**
+ * @name VERTEX_STYLE
  * @const {object}
  * @prop {string} OBJECT - The style produces object like
  * `{ data: root , children: [ { data: v1, children: [ ... ]}, ... ] }`
  * @prop {string} FIELD - The style produces object like `{ root: { v1: {} } }`.
  * With VERTEX_AS_FIELD vertex contents are written into object field after `.toString()`.
+ * @prop {function} validate
  */
-const VERTEX_STYLE = Object.freeze({
-  OBJECT: 'OBJECT_VERTEX_STYLE_CONSTANT',
-  FIELD: 'FIELD_VERTEX_STYLE_CONSTANT'
-})
+const VERTEX_STYLE = new ConstType([ 'OBJECT', 'FIELD' ])
 
 /** @private */
 function toJsVertexAsObject (binaryTreeArray, curI) {
@@ -44,16 +44,9 @@ function toJsVertexAsField (binaryTreeArray, curI) {
   }
 }
 
-function child1Index (i) {
-  return 2 * i + 1
-}
-
-function child2Index (i) {
-  return 2 * i + 2
-}
-
 function childrenIndexes (i) {
-  return [child1Index[i], child2Index[i]]
+  const base = 2 * i
+  return [ base + 1, base + 2 ]
 }
 
 function parentIndex (i) {
@@ -110,15 +103,19 @@ class BinaryHeap {
     return this.size === 0
   }
 
+  _swap (i, j) {
+    const tmp = this.treeArray[i]
+    this.treeArray[i] = this.treeArray[j]
+    this.treeArray[j] = tmp
+  }
+
   heapifyUp (curI) {
     const { a, cmp } = this._aliases()
     while (true) {
       if (curI === 0) break
       const parentI = parentIndex(curI)
       if (cmp(a[parentI], a[curI])) break
-      const tmp = a[parentI]
-      a[parentI] = a[curI]
-      a[curI] = tmp
+      this._swap(curI, parentI)
       curI = parentI
     }
   }
@@ -126,9 +123,7 @@ class BinaryHeap {
   addOne (el) {
     this.treeArray.push(el)
     const elI = this.treeArray.length - 1
-    if (elI !== 0) {
-      this.heapifyUp(elI)
-    }
+    this.heapifyUp(elI)
   }
 
   add (...elements) {
@@ -141,30 +136,39 @@ class BinaryHeap {
 
   heapifyDown (curI) {
     const { a, cmp } = this._aliases()
+    if (a.length <= 1) return
     while (true) {
-      const [child1I, child2I] = childrenIndexes(curI)
+      const [ child1I, child2I ] = childrenIndexes(curI)
       // if the child index is >= to length then then there is no child and cmp must succeed.
       // if curI has no children it is on the bootom and the algoritm must quit.
-      const cmpWithChild1 = cmp(a[curI], a[child1I]) || child1I >= a.length
-      const cmpWithChild2 = cmp(a[curI], a[child2I]) || child2I >= a.length
+      const child1InBounds = child1I < a.length
+      const child2InBounds = child2I < a.length
+      const cmpWithChild1 = !child1InBounds || cmp(a[curI], a[child1I])
+      const cmpWithChild2 = !child2InBounds || cmp(a[curI], a[child2I])
       if (cmpWithChild1 && cmpWithChild2) break
       let swapWithI = child1I
       // if there is no child1I, then swap must occur with child2I.
       // if there is no child1I and also no child2I on this iteration
       // the algorith would quit due to (cmpWithChild1 && cmpWithChild2).
-      if (child1I >= a.length || cmp(a[child2I], a[child1I])) swapWithI = child2I
-      const tmp = a[curI]
-      a[curI] = a[swapWithI]
-      a[swapWithI] = tmp
+      if (!child1InBounds || (child2InBounds && cmp(a[child2I], a[child1I]))) { swapWithI = child2I }
+      this._swap(curI, swapWithI)
       curI = swapWithI
     }
+  }
+
+  /**
+   * The sole purpose is to be overrided in IndexedBinaryHeap,
+   * to update the index.
+   */
+  _popInnerArray () {
+    return this.treeArray.pop()
   }
 
   _removeAtIndex (i) {
     const { a } = this._aliases()
     const result = a[i]
     a[i] = a[a.length - 1]
-    a.pop()
+    this._popInnerArray()
     this.heapifyDown(i)
     return result
   }
@@ -182,9 +186,8 @@ class BinaryHeap {
   /**
    * @typedef {function} find~predicate
    * @callback
-   * @param {any} el1 - Element of the heap
-   * @param {any} el2 - Also element of the heap
-   * @returns {boolean} - `true` if el1 equals el2 and `false` otherwise
+   * @param {any} el - Element of the heap
+   * @returns {boolean} - `true` if el is the one searched for
    */
   /**
    * @param {find~predicate} predicate
@@ -196,27 +199,38 @@ class BinaryHeap {
 
   /**
    * @param {find~predicate} predicate
-   * @returns {number} - Index 
+   * @returns {number} - Index
    */
   _findIndex (predicate) {
     return this.treeArray.findIndex(predicate)
   }
 
+  /**
+   * @param {find~predicate} predicate
+   */
   removeOne (predicate) {
     const i = this._findIndex(predicate)
     if (i === -1) {
-      return { element: undefined, found: false }
+      return { el: undefined, found: false }
     }
-    return { element: this._removeAtIndex(i), found: true }
+    return { el: this._removeAtIndex(i), found: true }
   }
 
-  modify (predicate, newEl) {
-    const i = this._findIndex(predicate)
-    if (i === -1) return
+  _replaceAtIndex (i, newEl) {
     this.treeArray[i] = newEl
     this.heapifyUp(i)
     this.heapifyDown(i)
     return newEl
+  }
+
+  /**
+   * @param {find~predicate} predicate
+   * @param {any} newEl
+   */
+  replaceOne (predicate, newEl) {
+    const i = this._findIndex(predicate)
+    if (i === -1) return
+    return this._removeAtIndex(i)
   }
 }
 
