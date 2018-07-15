@@ -12,6 +12,9 @@ declare -ar GLOB_LIST=(
     # Source
     "$PROJ/src/**/*.js"
     "$PROJ/src/**/*.json"
+    # Benchmarks 
+    "$PROJ/benchmarks/**/*.js"
+    "$PROJ/benchmarks/**/*.json"
     # Configs
     "$PROJ/.esdoc.json"
     "$PROJ/.eslintrc.json"

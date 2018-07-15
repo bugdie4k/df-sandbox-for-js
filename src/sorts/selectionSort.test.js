@@ -1,7 +1,11 @@
 const selectionSort = require('./selectionSort.js')
+const getTestArrays = require('./getTestArrays.js')
 
-const a1 = [ 3, 4, 5, 10, 2, 7, 6, 5, 4, 10, 20, 11, 15, 14, 13 ]
-
-console.log('selection sort')
-console.log('unsorted', a1)
-console.log('sorted  ', selectionSort(a1))
+describe('selection sort', () => {
+  it('sorts correctly in place', () => {
+    const { initial, sorted } = getTestArrays()
+    const ret = selectionSort(initial)
+    expect(ret).toBe(initial) // same object
+    expect(ret).toEqual(sorted)
+  })
+})

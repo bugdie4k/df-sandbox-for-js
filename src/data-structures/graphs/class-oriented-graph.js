@@ -1,4 +1,4 @@
-const uuid = require('uuid/v1')
+const uuid = require('uuid/v4')
 const { inspect } = require('util')
 const ConstType = require('../../utils/ConstType')
 

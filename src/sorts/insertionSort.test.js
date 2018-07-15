@@ -1,26 +1,28 @@
 const { insertionSort, COPY_TYPE } = require('./insertionSort.js')
+const getTestArrays = require('./getTestArrays.js')
 const assert = require('assert')
 
 describe('insertion sort', () => {
-  function get () {
-    return {
-      initial: [ 3, 4, 5, 10, 2, 7, 6, 5, 4, 10, 20, 11, 15, 14, 13 ],
-      sorted: [ 2, 3, 4, 4, 5, 5, 6, 7, 10, 10, 11, 13, 14, 15, 20 ]
-    }
-  }
-
-  it('sorts correctly in place', () => {
-    const { initial, sorted } = get()
+  it('in place', () => {
+    const { initial, sorted } = getTestArrays()
     const ret = insertionSort(initial)
-    assert(ret === initial) // same object
+    expect(ret).toBe(initial) // same object
     expect(ret).toEqual(sorted)
   })
 
-  it('sorts correctly with a JSON copy', () => {
-    const { initial, sorted } = get()
-    const ret = insertionSort(initial, { copy: COPY_TYPE.JSON_COPY })
-    assert(ret !== initial)
+  it('in place, parametrized by callback', () => {
+    const { initial, sortedBackwards } = getTestArrays()
+    const ret = insertionSort(initial, { cmp: (a, b) => a > b })
+    expect(ret).toBe(initial) // same object
+    expect(ret).toEqual(sortedBackwards)
+  })
+
+  it('with a JSON copy', () => {
+    const { initial, sorted } = getTestArrays()
+    const ret = insertionSort(initial, { copy: COPY_TYPE.JSON })
+    assert(ret !== initial) // different objects
     expect(ret).toEqual(sorted)
+    expect(initial).toEqual(getTestArrays().initial) // initial is unchanged
   })
 
   it('fails with bad COPY_TYPE', () => {

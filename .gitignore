@@ -1,7 +1,6 @@
 package-lock.json
 docs
 coverage
-.vscode
 
 # Created by https://www.gitignore.io/api/node,linux,emacs,visualstudiocode
 

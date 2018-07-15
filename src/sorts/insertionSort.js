@@ -1,12 +1,25 @@
 const ConstType = require('../utils/ConstType')
 
-const COPY_TYPE = new ConstType([ 'NONE', 'IN_PLACE', 'JSON_COPY' ])
+const COPY_TYPE = new ConstType([ 'NONE', 'IN_PLACE', 'JSON' ])
 
-function insertionSortInPlace (a) {
+/* function insertionSortNumericInPlace (a) {
   for (let i = 1; i < a.length; ++i) {
     let j = i - 1
     const x = a[i]
-    while (j >= 0 && a[j] > x) {
+    while (j >= 0 && a[j] > x)) {
+      a[j + 1] = a[j]
+      --j
+    }
+    a[j + 1] = x
+  }
+  return a
+} */
+
+function insertionSortInPlace (a, cmp) {
+  for (let i = 1; i < a.length; ++i) {
+    let j = i - 1
+    const x = a[i]
+    while (j >= 0 && !cmp(a[j], x)) {
       a[j + 1] = a[j]
       --j
     }
@@ -16,23 +29,22 @@ function insertionSortInPlace (a) {
 }
 
 function insertionSort (a, options = {}) {
-  const { IN_PLACE, NONE, JSON_COPY } = COPY_TYPE
-  let { copy } = options
-  if (copy === undefined) copy = IN_PLACE
+  let { copy, cmp } = options
+  if (copy === undefined) copy = COPY_TYPE.IN_PLACE
+  if (cmp === undefined) cmp = (a, b) => a < b
   switch (copy) {
-    case NONE:
-    case IN_PLACE:
-      return insertionSortInPlace(a)
-    case JSON_COPY:
+    case COPY_TYPE.NONE:
+    case COPY_TYPE.IN_PLACE:
+      return insertionSortInPlace(a, cmp)
+    case COPY_TYPE.JSON:
       const copyOfA = JSON.parse(JSON.stringify(a))
-      return insertionSortInPlace(copyOfA)
+      return insertionSortInPlace(copyOfA, cmp)
     default:
       COPY_TYPE.validate(copy)
   }
 }
 
 module.exports = {
-  insertionSortInPlace,
   insertionSort,
   COPY_TYPE
 }

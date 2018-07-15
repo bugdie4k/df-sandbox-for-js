@@ -1,3 +1,5 @@
+// Recursive
+
 /** Hoare partition scheme */
 function partition (a, l, h) {
   const pivot = a[l]
@@ -19,16 +21,22 @@ function partition (a, l, h) {
   }
 }
 
-function quickSortAux (a, l, h) {
+function quickSortRecursiveAux (a, l, h) {
   if (l >= h) {
     return a
   }
   const pi = partition(a, l, h)
-  quickSortAux(a, l, pi)
-  quickSortAux(a, pi + 1, h)
+  quickSortRecursiveAux(a, l, pi)
+  quickSortRecursiveAux(a, pi + 1, h)
   return a
 }
 
-const quickSort = a => quickSortAux(a, 0, a.length - 1)
+const quickSortRecursive = a => quickSortRecursiveAux(a, 0, a.length - 1)
 
-module.exports = quickSort
+// Iterative
+
+function quickSortIterative(a) {
+  // TODO
+}
+
+module.exports = { quickSortRecursive }
