@@ -5,19 +5,17 @@
       "type": "node",
       "request": "launch",
       "name": "Run File",
-      "program": "${file}"
-    }, 
+      "program": "${file}",
+      "cwd": "${fileDirname}",
+      "console": "integratedTerminal"
+    },
     {
-        "type": "node",
-        "request": "launch",
-        "name": "Run Tests In File",
-        "program": "${workspaceFolder}/node_modules/.bin/jest",
-        "args": [
-            "--config",
-            "${workspaceFolder}/jest.config.js",
-            "${file}"
-        ],
-        "console": "integratedTerminal"
-      }, 
+      "type": "node",
+      "request": "launch",
+      "name": "Run Tests In File",
+      "program": "${workspaceFolder}/node_modules/.bin/jest",
+      "args": ["--config", "${workspaceFolder}/jest.config.js", "${file}"],
+      "console": "integratedTerminal"
+    }
   ]
 }

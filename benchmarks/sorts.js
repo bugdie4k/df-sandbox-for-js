@@ -1,45 +1,75 @@
+const MBench = require('./MBench')
+const fs = require('fs')
+const assert = require('assert')
 const { insertionSort } = require('../src/sorts/insertionSort')
 const selectionSort = require('../src/sorts/selectionSort')
-const { quickSortRecursive } = require('../src/sorts/quickSort')
-const Benchmark = require('benchmark')
-// const { inspect } = require('util')
+const {
+  quickSortRecursive,
+  quickSortIterative
+} = require('../src/sorts/quickSort')
 
-const prn = s => process.stdout.write(s)
-const prnln = s => prn(`${s}\n`)
+const readArray = JSONpath => JSON.parse(fs.readFileSync(JSONpath)).array
 
-function bench (name, fn) {
-  const b = new Benchmark(name, fn)
-  b.on('start', () => prnln(`>> START: ${name}`))
-    .on('cycle', () => prn('.'))
-    .on('complete', () => {
-      const mean = b.stats.mean
-      prnln(`\nMEAN: ${mean}s = ${mean * 1000}ms`)
-      prnln(`<< END: ${name}`)
-    })
-    .run()
-}
-
-function benchSort (name, sortFn, arrayJSON) {
-  bench(name, () => {
-    const { array } = require(arrayJSON)
-    sortFn(array)
+function bench (name, sortFn, arrayPath, sortedArrayPath) {
+  const sortedArray = readArray(sortedArrayPath)
+  const b = new MBench(name, {
+    beforeEach: function () {
+      this.array = readArray(arrayPath)
+    },
+    fn: function () {
+      sortFn(this.array)
+    },
+    afterEach: function () {
+      assert.deepStrictEqual(this.array, sortedArray)
+      this.array = null
+    }
   })
+  b.run().report()
+  console.log()
+  return b
 }
 
-/* const benchSortOn1000 = (name, sortFn) =>
-  benchSort(name + ' on 1000', sortFn, './array1000.json')
-benchSortOn1000('insertion', insertionSort)
-benchSortOn1000('selection', selectionSort)
-benchSortOn1000('quicksort recursive', quickSortRecursive) */
+function bench1K (name, sortFn) {
+  bench(name, sortFn, 'array1000.json', './sortedArray1000.json')
+}
+function bench10K (name, sortFn) {
+  bench(name, sortFn, 'array10000.json', './sortedArray10000.json')
+}
+function bench100K (name, sortFn) {
+  bench(name, sortFn, 'array100000.json', './sortedArray100000.json')
+}
 
-const benchSortOn10000 = (name, sortFn) =>
-  benchSort(name + ' on 10000', sortFn, './array10000.json')
-// benchSortOn10000('insertion', insertionSort)
-// benchSortOn10000('selection', selectionSort)
-// benchSortOn10000('quicksort recursive', quickSortRecursive) // overflow
+bench1K('insertionSort 1K', insertionSort)
+bench1K('selectionSort 1K', selectionSort)
+bench1K('quickSortRecursive 1K', quickSortRecursive)
+bench1K('quickSortIterative 1K', quickSortIterative)
 
-const benchSortOn100000 = (name, sortFn) =>
-  benchSort(name + ' on 100000', sortFn, './array100000.json')
-// benchSortOn100000('insertion', insertionSort) // to slow
-// benchSortOn100000('selection', selectionSort) // to slow
-// benchSortOn100000('quicksort recursive', quickSortRecursive) // overflow
+console.log('----\n')
+
+bench10K('insertionSort 10K', insertionSort)
+bench10K('selectionSort 10K', selectionSort)
+bench10K('quickSortRecursive 10K', quickSortRecursive)
+bench10K('quickSortIterative 10K', quickSortIterative)
+
+console.log('----\n')
+
+bench100K('insertionSort 100K', insertionSort)
+bench100K('selectionSort 100K', selectionSort)
+bench100K('quickSortRecursive 100K', quickSortRecursive)
+bench100K('quickSortIterative 100K', quickSortIterative)
+
+/* const b = new MBench('', {
+  beforeEach: function () {
+    this.array = readArray('./array1000.json')
+    this.sortedArray = readArray('./sortedArray1000.json')
+  },
+  fn: function () {
+    insertionSort(this.array)
+  },
+  afterEach: function () {
+    assert.deepStrictEqual(this.array, this.sortedArray)
+    this.array = null
+  }
+})
+b.run().report()
+ */

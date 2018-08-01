@@ -1,0 +1,84 @@
+const { insertionSort } = require('../src/sorts/insertionSort')
+const selectionSort = require('../src/sorts/selectionSort')
+const {
+  quickSortRecursive,
+  quickSortIterative
+} = require('../src/sorts/quickSort')
+const Benchmark = require('benchmark')
+const assert = require('assert')
+const fs = require('fs')
+// const { inspect } = require('util')
+
+const prn = s => process.stdout.write(s)
+const prnln = s => prn(`${s}\n`)
+
+// TODO: Need to write my own benchmarking tool
+// Benchmark.js is too complicated, I just want a simple iteration based one
+function benchSort(name, sortFn, arrayJSON, sortedArrayJSON) {
+  const readArray = JSONpath => JSON.parse(fs.readFileSync(JSONpath)).array
+  const isEmptyTest = name.slice(0, 5) === 'empty'
+  const sortedArray = readArray(sortedArrayJSON)
+  let array
+  const b = new Benchmark(name, () => {
+    array = readArray(arrayJSON)
+    assert.notDeepEqual(array, sortedArray)
+    sortFn(array)
+    if (isEmptyTest) {
+      assert.notDeepEqual(array, sortedArray)
+    } else {
+      assert.deepEqual(array, sortedArray)
+    }
+    // prn('.')
+  })
+  b.on('start', () => {
+    prnln(`>> START: ${name}`)
+  })
+    .on('complete', ev => {
+      const mean = ev.currentTarget.stats.mean
+      prnln(`MEAN: ${mean}s = ${mean * 1000}ms`)
+      prnln(`<< END: ${name}\n`)
+    })
+    .on('error', ev => {
+      console.log('ERROR OCCURED\n' + ev.message)
+    })
+    .run()
+}
+
+const benchSortOn1000 = (name, sortFn) =>
+  benchSort(
+    name + ' on 1000',
+    sortFn,
+    './array1000.json',
+    './sortedArray1000.json'
+  )
+benchSortOn1000('empty', () => {})
+benchSortOn1000('insertion', insertionSort)
+benchSortOn1000('selection', selectionSort)
+benchSortOn1000('quicksort iterative', quickSortIterative)
+benchSortOn1000('quicksort recursive', quickSortRecursive)
+
+const benchSortOn10000 = (name, sortFn) =>
+  benchSort(
+    name + ' on 10000',
+    sortFn,
+    './array10000.json',
+    './sortedArray10000.json'
+  )
+benchSortOn10000('empty', () => {})
+benchSortOn10000('insertion', insertionSort)
+// benchSortOn10000('selection', selectionSort)
+benchSortOn10000('quicksort iterative', quickSortIterative)
+// benchSortOn10000('quicksort recursive', quickSortRecursive) // overflow
+
+/* const benchSortOn100000 = (name, sortFn) =>
+  benchSort(
+    name + ' on 100000',
+    sortFn,
+    './array100000.json',
+    './sortedArray100000.json'
+  )
+benchSortOn100000('empty', () => {})
+benchSortOn100000('insertion', insertionSort) // to slow
+benchSortOn100000('selection', selectionSort) // to slow
+benchSortOn100000('quicksort iterative', quickSortIterative) */
+// benchSortOn100000('quicksort recursive', quickSortRecursive) // overflow

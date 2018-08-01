@@ -35,8 +35,19 @@ const quickSortRecursive = a => quickSortRecursiveAux(a, 0, a.length - 1)
 
 // Iterative
 
-function quickSortIterative(a) {
-  // TODO
+function quickSortIterativeAux (a, l, h) {
+  const rangeStack = [[ l, h ]]
+  while (rangeStack.length !== 0) {
+    const [ l, h ] = rangeStack.pop()
+    if (l >= h) {
+      continue
+    }
+    const pi = partition(a, l, h)
+    rangeStack.push([ l, pi ], [ pi + 1, h ])
+  }
+  return a
 }
 
-module.exports = { quickSortRecursive }
+const quickSortIterative = a => quickSortIterativeAux(a, 0, a.length - 1)
+
+module.exports = { quickSortRecursive, quickSortIterative }
