@@ -1,25 +1,17 @@
 {
-  "extends": "standard",
+  "extends": ["standard", "standard-react"],
   "plugins": ["json"],
   "env": {
     "jest": true
   },
   "rules": {
-    "array-bracket-spacing": [
+    "no-unused-vars": [
       "error",
-      "always",
-      {
-        "objectsInArrays": false,
-        "arraysInArrays": false
-      }
+      { "vars": "all", "args": "after-used", "ignoreRestSiblings": false }
     ],
-    "object-curly-spacing": [
-      "error",
-      "always",
-      {
-        "arraysInObjects": false,
-        "objectsInObjects": false
-      }
-    ]
+    "arrow-parens": ["error", "always"],
+    "array-bracket-spacing": ["error", "always"],
+    "object-curly-spacing": ["error", "always"],
+    "max-len": ["error", { "code": 100 }]
   }
 }

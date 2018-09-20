@@ -1,0 +1,820 @@
+{
+  "results": [
+    {
+      "name": "quickSortRecursive-100",
+      "info": {
+        "sortFnName": "quickSortRecursive",
+        "arraySize": 100,
+        "arrayPath": "arrays/size100/random.json"
+      },
+      "time": {
+        "ms": 1,
+        "ns": 52486
+      }
+    },
+    {
+      "name": "quickSortIterative-100",
+      "info": {
+        "sortFnName": "quickSortIterative",
+        "arraySize": 100,
+        "arrayPath": "arrays/size100/random.json"
+      },
+      "time": {
+        "ms": 0,
+        "ns": 340882
+      }
+    },
+    {
+      "name": "insertionSort-100",
+      "info": {
+        "sortFnName": "insertionSort",
+        "arraySize": 100,
+        "arrayPath": "arrays/size100/random.json"
+      },
+      "time": {
+        "ms": 0,
+        "ns": 344169
+      }
+    },
+    {
+      "name": "selectionSort-100",
+      "info": {
+        "sortFnName": "selectionSort",
+        "arraySize": 100,
+        "arrayPath": "arrays/size100/random.json"
+      },
+      "time": {
+        "ms": 0,
+        "ns": 131358
+      }
+    },
+    {
+      "name": "quickSortRecursive-200",
+      "info": {
+        "sortFnName": "quickSortRecursive",
+        "arraySize": 200,
+        "arrayPath": "arrays/size200/random.json"
+      },
+      "time": {
+        "ms": 0,
+        "ns": 53287
+      }
+    },
+    {
+      "name": "quickSortIterative-200",
+      "info": {
+        "sortFnName": "quickSortIterative",
+        "arraySize": 200,
+        "arrayPath": "arrays/size200/random.json"
+      },
+      "time": {
+        "ms": 0,
+        "ns": 526209
+      }
+    },
+    {
+      "name": "insertionSort-200",
+      "info": {
+        "sortFnName": "insertionSort",
+        "arraySize": 200,
+        "arrayPath": "arrays/size200/random.json"
+      },
+      "time": {
+        "ms": 0,
+        "ns": 212233
+      }
+    },
+    {
+      "name": "selectionSort-200",
+      "info": {
+        "sortFnName": "selectionSort",
+        "arraySize": 200,
+        "arrayPath": "arrays/size200/random.json"
+      },
+      "time": {
+        "ms": 0,
+        "ns": 191269
+      }
+    },
+    {
+      "name": "quickSortRecursive-300",
+      "info": {
+        "sortFnName": "quickSortRecursive",
+        "arraySize": 300,
+        "arrayPath": "arrays/size300/random.json"
+      },
+      "time": {
+        "ms": 0,
+        "ns": 79592
+      }
+    },
+    {
+      "name": "quickSortIterative-300",
+      "info": {
+        "sortFnName": "quickSortIterative",
+        "arraySize": 300,
+        "arrayPath": "arrays/size300/random.json"
+      },
+      "time": {
+        "ms": 0,
+        "ns": 454375
+      }
+    },
+    {
+      "name": "insertionSort-300",
+      "info": {
+        "sortFnName": "insertionSort",
+        "arraySize": 300,
+        "arrayPath": "arrays/size300/random.json"
+      },
+      "time": {
+        "ms": 0,
+        "ns": 454747
+      }
+    },
+    {
+      "name": "selectionSort-300",
+      "info": {
+        "sortFnName": "selectionSort",
+        "arraySize": 300,
+        "arrayPath": "arrays/size300/random.json"
+      },
+      "time": {
+        "ms": 0,
+        "ns": 566526
+      }
+    },
+    {
+      "name": "quickSortRecursive-400",
+      "info": {
+        "sortFnName": "quickSortRecursive",
+        "arraySize": 400,
+        "arrayPath": "arrays/size400/random.json"
+      },
+      "time": {
+        "ms": 0,
+        "ns": 111819
+      }
+    },
+    {
+      "name": "quickSortIterative-400",
+      "info": {
+        "sortFnName": "quickSortIterative",
+        "arraySize": 400,
+        "arrayPath": "arrays/size400/random.json"
+      },
+      "time": {
+        "ms": 0,
+        "ns": 566721
+      }
+    },
+    {
+      "name": "insertionSort-400",
+      "info": {
+        "sortFnName": "insertionSort",
+        "arraySize": 400,
+        "arrayPath": "arrays/size400/random.json"
+      },
+      "time": {
+        "ms": 0,
+        "ns": 792240
+      }
+    },
+    {
+      "name": "selectionSort-400",
+      "info": {
+        "sortFnName": "selectionSort",
+        "arraySize": 400,
+        "arrayPath": "arrays/size400/random.json"
+      },
+      "time": {
+        "ms": 0,
+        "ns": 811963
+      }
+    },
+    {
+      "name": "quickSortRecursive-500",
+      "info": {
+        "sortFnName": "quickSortRecursive",
+        "arraySize": 500,
+        "arrayPath": "arrays/size500/random.json"
+      },
+      "time": {
+        "ms": 0,
+        "ns": 145298
+      }
+    },
+    {
+      "name": "quickSortIterative-500",
+      "info": {
+        "sortFnName": "quickSortIterative",
+        "arraySize": 500,
+        "arrayPath": "arrays/size500/random.json"
+      },
+      "time": {
+        "ms": 0,
+        "ns": 624680
+      }
+    },
+    {
+      "name": "insertionSort-500",
+      "info": {
+        "sortFnName": "insertionSort",
+        "arraySize": 500,
+        "arrayPath": "arrays/size500/random.json"
+      },
+      "time": {
+        "ms": 1,
+        "ns": 313347
+      }
+    },
+    {
+      "name": "selectionSort-500",
+      "info": {
+        "sortFnName": "selectionSort",
+        "arraySize": 500,
+        "arrayPath": "arrays/size500/random.json"
+      },
+      "time": {
+        "ms": 1,
+        "ns": 149323
+      }
+    },
+    {
+      "name": "quickSortRecursive-600",
+      "info": {
+        "sortFnName": "quickSortRecursive",
+        "arraySize": 600,
+        "arrayPath": "arrays/size600/random.json"
+      },
+      "time": {
+        "ms": 0,
+        "ns": 175616
+      }
+    },
+    {
+      "name": "quickSortIterative-600",
+      "info": {
+        "sortFnName": "quickSortIterative",
+        "arraySize": 600,
+        "arrayPath": "arrays/size600/random.json"
+      },
+      "time": {
+        "ms": 0,
+        "ns": 760540
+      }
+    },
+    {
+      "name": "insertionSort-600",
+      "info": {
+        "sortFnName": "insertionSort",
+        "arraySize": 600,
+        "arrayPath": "arrays/size600/random.json"
+      },
+      "time": {
+        "ms": 1,
+        "ns": 639609
+      }
+    },
+    {
+      "name": "selectionSort-600",
+      "info": {
+        "sortFnName": "selectionSort",
+        "arraySize": 600,
+        "arrayPath": "arrays/size600/random.json"
+      },
+      "time": {
+        "ms": 1,
+        "ns": 714205
+      }
+    },
+    {
+      "name": "quickSortRecursive-700",
+      "info": {
+        "sortFnName": "quickSortRecursive",
+        "arraySize": 700,
+        "arrayPath": "arrays/size700/random.json"
+      },
+      "time": {
+        "ms": 0,
+        "ns": 212790
+      }
+    },
+    {
+      "name": "quickSortIterative-700",
+      "info": {
+        "sortFnName": "quickSortIterative",
+        "arraySize": 700,
+        "arrayPath": "arrays/size700/random.json"
+      },
+      "time": {
+        "ms": 0,
+        "ns": 885168
+      }
+    },
+    {
+      "name": "insertionSort-700",
+      "info": {
+        "sortFnName": "insertionSort",
+        "arraySize": 700,
+        "arrayPath": "arrays/size700/random.json"
+      },
+      "time": {
+        "ms": 2,
+        "ns": 264556
+      }
+    },
+    {
+      "name": "selectionSort-700",
+      "info": {
+        "sortFnName": "selectionSort",
+        "arraySize": 700,
+        "arrayPath": "arrays/size700/random.json"
+      },
+      "time": {
+        "ms": 1,
+        "ns": 945527
+      }
+    },
+    {
+      "name": "quickSortRecursive-800",
+      "info": {
+        "sortFnName": "quickSortRecursive",
+        "arraySize": 800,
+        "arrayPath": "arrays/size800/random.json"
+      },
+      "time": {
+        "ms": 0,
+        "ns": 245239
+      }
+    },
+    {
+      "name": "quickSortIterative-800",
+      "info": {
+        "sortFnName": "quickSortIterative",
+        "arraySize": 800,
+        "arrayPath": "arrays/size800/random.json"
+      },
+      "time": {
+        "ms": 0,
+        "ns": 930806
+      }
+    },
+    {
+      "name": "insertionSort-800",
+      "info": {
+        "sortFnName": "insertionSort",
+        "arraySize": 800,
+        "arrayPath": "arrays/size800/random.json"
+      },
+      "time": {
+        "ms": 3,
+        "ns": 67183
+      }
+    },
+    {
+      "name": "selectionSort-800",
+      "info": {
+        "sortFnName": "selectionSort",
+        "arraySize": 800,
+        "arrayPath": "arrays/size800/random.json"
+      },
+      "time": {
+        "ms": 2,
+        "ns": 543592
+      }
+    },
+    {
+      "name": "quickSortRecursive-900",
+      "info": {
+        "sortFnName": "quickSortRecursive",
+        "arraySize": 900,
+        "arrayPath": "arrays/size900/random.json"
+      },
+      "time": {
+        "ms": 0,
+        "ns": 283194
+      }
+    },
+    {
+      "name": "quickSortIterative-900",
+      "info": {
+        "sortFnName": "quickSortIterative",
+        "arraySize": 900,
+        "arrayPath": "arrays/size900/random.json"
+      },
+      "time": {
+        "ms": 1,
+        "ns": 82324
+      }
+    },
+    {
+      "name": "insertionSort-900",
+      "info": {
+        "sortFnName": "insertionSort",
+        "arraySize": 900,
+        "arrayPath": "arrays/size900/random.json"
+      },
+      "time": {
+        "ms": 3,
+        "ns": 880423
+      }
+    },
+    {
+      "name": "selectionSort-900",
+      "info": {
+        "sortFnName": "selectionSort",
+        "arraySize": 900,
+        "arrayPath": "arrays/size900/random.json"
+      },
+      "time": {
+        "ms": 3,
+        "ns": 523413
+      }
+    },
+    {
+      "name": "quickSortRecursive-1000",
+      "info": {
+        "sortFnName": "quickSortRecursive",
+        "arraySize": 1000,
+        "arrayPath": "arrays/size1000/random.json"
+      },
+      "time": {
+        "ms": 0,
+        "ns": 311856
+      }
+    },
+    {
+      "name": "quickSortIterative-1000",
+      "info": {
+        "sortFnName": "quickSortIterative",
+        "arraySize": 1000,
+        "arrayPath": "arrays/size1000/random.json"
+      },
+      "time": {
+        "ms": 1,
+        "ns": 359510
+      }
+    },
+    {
+      "name": "insertionSort-1000",
+      "info": {
+        "sortFnName": "insertionSort",
+        "arraySize": 1000,
+        "arrayPath": "arrays/size1000/random.json"
+      },
+      "time": {
+        "ms": 4,
+        "ns": 456179
+      }
+    },
+    {
+      "name": "selectionSort-1000",
+      "info": {
+        "sortFnName": "selectionSort",
+        "arraySize": 1000,
+        "arrayPath": "arrays/size1000/random.json"
+      },
+      "time": {
+        "ms": 3,
+        "ns": 955506
+      }
+    },
+    {
+      "name": "quickSortRecursive-2000",
+      "info": {
+        "sortFnName": "quickSortRecursive",
+        "arraySize": 2000,
+        "arrayPath": "arrays/size2000/random.json"
+      },
+      "time": {
+        "ms": 0,
+        "ns": 674880
+      }
+    },
+    {
+      "name": "quickSortIterative-2000",
+      "info": {
+        "sortFnName": "quickSortIterative",
+        "arraySize": 2000,
+        "arrayPath": "arrays/size2000/random.json"
+      },
+      "time": {
+        "ms": 2,
+        "ns": 903824
+      }
+    },
+    {
+      "name": "insertionSort-2000",
+      "info": {
+        "sortFnName": "insertionSort",
+        "arraySize": 2000,
+        "arrayPath": "arrays/size2000/random.json"
+      },
+      "time": {
+        "ms": 18,
+        "ns": 923277
+      }
+    },
+    {
+      "name": "selectionSort-2000",
+      "info": {
+        "sortFnName": "selectionSort",
+        "arraySize": 2000,
+        "arrayPath": "arrays/size2000/random.json"
+      },
+      "time": {
+        "ms": 15,
+        "ns": 833123
+      }
+    },
+    {
+      "name": "quickSortRecursive-3000",
+      "info": {
+        "sortFnName": "quickSortRecursive",
+        "arraySize": 3000,
+        "arrayPath": "arrays/size3000/random.json"
+      },
+      "time": {
+        "ms": 1,
+        "ns": 147487
+      }
+    },
+    {
+      "name": "quickSortIterative-3000",
+      "info": {
+        "sortFnName": "quickSortIterative",
+        "arraySize": 3000,
+        "arrayPath": "arrays/size3000/random.json"
+      },
+      "time": {
+        "ms": 3,
+        "ns": 745930
+      }
+    },
+    {
+      "name": "insertionSort-3000",
+      "info": {
+        "sortFnName": "insertionSort",
+        "arraySize": 3000,
+        "arrayPath": "arrays/size3000/random.json"
+      },
+      "time": {
+        "ms": 41,
+        "ns": 572639
+      }
+    },
+    {
+      "name": "selectionSort-3000",
+      "info": {
+        "sortFnName": "selectionSort",
+        "arraySize": 3000,
+        "arrayPath": "arrays/size3000/random.json"
+      },
+      "time": {
+        "ms": 35,
+        "ns": 740620
+      }
+    },
+    {
+      "name": "quickSortRecursive-4000",
+      "info": {
+        "sortFnName": "quickSortRecursive",
+        "arraySize": 4000,
+        "arrayPath": "arrays/size4000/random.json"
+      },
+      "time": {
+        "ms": 1,
+        "ns": 445809
+      }
+    },
+    {
+      "name": "quickSortIterative-4000",
+      "info": {
+        "sortFnName": "quickSortIterative",
+        "arraySize": 4000,
+        "arrayPath": "arrays/size4000/random.json"
+      },
+      "time": {
+        "ms": 5,
+        "ns": 429972
+      }
+    },
+    {
+      "name": "insertionSort-4000",
+      "info": {
+        "sortFnName": "insertionSort",
+        "arraySize": 4000,
+        "arrayPath": "arrays/size4000/random.json"
+      },
+      "time": {
+        "ms": 81,
+        "ns": 767141
+      }
+    },
+    {
+      "name": "selectionSort-4000",
+      "info": {
+        "sortFnName": "selectionSort",
+        "arraySize": 4000,
+        "arrayPath": "arrays/size4000/random.json"
+      },
+      "time": {
+        "ms": 65,
+        "ns": 527874
+      }
+    },
+    {
+      "name": "quickSortRecursive-5000",
+      "info": {
+        "sortFnName": "quickSortRecursive",
+        "arraySize": 5000,
+        "arrayPath": "arrays/size5000/random.json"
+      },
+      "time": {
+        "ms": 1,
+        "ns": 938400
+      }
+    },
+    {
+      "name": "quickSortIterative-5000",
+      "info": {
+        "sortFnName": "quickSortIterative",
+        "arraySize": 5000,
+        "arrayPath": "arrays/size5000/random.json"
+      },
+      "time": {
+        "ms": 6,
+        "ns": 333729
+      }
+    },
+    {
+      "name": "insertionSort-5000",
+      "info": {
+        "sortFnName": "insertionSort",
+        "arraySize": 5000,
+        "arrayPath": "arrays/size5000/random.json"
+      },
+      "time": {
+        "ms": 119,
+        "ns": 875972
+      }
+    },
+    {
+      "name": "selectionSort-5000",
+      "info": {
+        "sortFnName": "selectionSort",
+        "arraySize": 5000,
+        "arrayPath": "arrays/size5000/random.json"
+      },
+      "time": {
+        "ms": 98,
+        "ns": 54070
+      }
+    },
+    {
+      "name": "quickSortRecursive-10000",
+      "info": {
+        "sortFnName": "quickSortRecursive",
+        "arraySize": 10000,
+        "arrayPath": "arrays/size10000/random.json"
+      },
+      "time": {
+        "ms": 4,
+        "ns": 20360
+      }
+    },
+    {
+      "name": "quickSortIterative-10000",
+      "info": {
+        "sortFnName": "quickSortIterative",
+        "arraySize": 10000,
+        "arrayPath": "arrays/size10000/random.json"
+      },
+      "time": {
+        "ms": 12,
+        "ns": 639796
+      }
+    },
+    {
+      "name": "insertionSort-10000",
+      "info": {
+        "sortFnName": "insertionSort",
+        "arraySize": 10000,
+        "arrayPath": "arrays/size10000/random.json"
+      },
+      "time": {
+        "ms": 467,
+        "ns": 269691
+      }
+    },
+    {
+      "name": "selectionSort-10000",
+      "info": {
+        "sortFnName": "selectionSort",
+        "arraySize": 10000,
+        "arrayPath": "arrays/size10000/random.json"
+      },
+      "time": {
+        "ms": 391,
+        "ns": 178946
+      }
+    },
+    {
+      "name": "quickSortRecursive-15000",
+      "info": {
+        "sortFnName": "quickSortRecursive",
+        "arraySize": 15000,
+        "arrayPath": "arrays/size15000/random.json"
+      },
+      "time": {
+        "ms": 6,
+        "ns": 96150
+      }
+    },
+    {
+      "name": "quickSortIterative-15000",
+      "info": {
+        "sortFnName": "quickSortIterative",
+        "arraySize": 15000,
+        "arrayPath": "arrays/size15000/random.json"
+      },
+      "time": {
+        "ms": 19,
+        "ns": 606837
+      }
+    },
+    {
+      "name": "insertionSort-15000",
+      "info": {
+        "sortFnName": "insertionSort",
+        "arraySize": 15000,
+        "arrayPath": "arrays/size15000/random.json"
+      },
+      "time": {
+        "ms": 1040,
+        "ns": 665183
+      }
+    },
+    {
+      "name": "selectionSort-15000",
+      "info": {
+        "sortFnName": "selectionSort",
+        "arraySize": 15000,
+        "arrayPath": "arrays/size15000/random.json"
+      },
+      "time": {
+        "ms": 879,
+        "ns": 294066
+      }
+    },
+    {
+      "name": "quickSortRecursive-20000",
+      "info": {
+        "sortFnName": "quickSortRecursive",
+        "arraySize": 20000,
+        "arrayPath": "arrays/size20000/random.json"
+      },
+      "time": {
+        "ms": 8,
+        "ns": 783155
+      }
+    },
+    {
+      "name": "quickSortIterative-20000",
+      "info": {
+        "sortFnName": "quickSortIterative",
+        "arraySize": 20000,
+        "arrayPath": "arrays/size20000/random.json"
+      },
+      "time": {
+        "ms": 26,
+        "ns": 362888
+      }
+    },
+    {
+      "name": "insertionSort-20000",
+      "info": {
+        "sortFnName": "insertionSort",
+        "arraySize": 20000,
+        "arrayPath": "arrays/size20000/random.json"
+      },
+      "time": {
+        "ms": 1842,
+        "ns": 48329
+      }
+    },
+    {
+      "name": "selectionSort-20000",
+      "info": {
+        "sortFnName": "selectionSort",
+        "arraySize": 20000,
+        "arrayPath": "arrays/size20000/random.json"
+      },
+      "time": {
+        "ms": 1550,
+        "ns": 767418
+      }
+    }
+  ]
+}
